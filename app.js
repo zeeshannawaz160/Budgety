@@ -25,7 +25,7 @@ var budgetController = (function() {
         var sum = 0 ;
 
         data.allItems[type].forEach(function(current) {
-            sum = sum + parseInt(current.value);
+            sum = sum + parseFloat(current.value);
 
             console.log(current.value);
             console.log(sum);
@@ -91,6 +91,7 @@ var budgetController = (function() {
         },
 
         calculateBudget: function() {
+            var extra;
 
             //calculate total income and expense
             calculateTotals('inc');
@@ -100,18 +101,25 @@ var budgetController = (function() {
             data.budget = (data.totals.inc - data.totals.exp);
 
             //calculate total expenses percentage
-            data.percentage = Math.round(((data.totals['exp']/ data.totals['inc']) * 100));
+            extra = ((data.totals['exp']/ data.totals['inc']) * 100);
+            extra = Math.abs(extra);
+            extra = extra.toFixed(2);
+
+            data.percentage = extra;
         },
 
         calculateItemPercentage: function() {
-            var temp;
+            var temp, extra;
 
             data.allItems['exp'].forEach(function(current) {
-                current.percentage = Math.round((current.value / data.totals['inc'] * 100));
+                extra = (current.value / data.totals['inc'] * 100);
+                extra = Math.abs(extra);
+                extra = extra.toFixed(2);
+
+                current.percentage = extra;
                 //console.log(current.percentage);
                 temp = current.percentage;
             });
-
             data.allItems['exp'].percentage = temp;
             return temp;
         },
