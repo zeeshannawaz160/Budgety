@@ -96,7 +96,7 @@ body {
 .budget__expenses--percentage {
     float: left;
     width: 37px;
-    font-size: 10px;
+    font-size: 9px;
     padding: 3px 0;
     margin-left: 10px;
 }
@@ -224,7 +224,7 @@ h2 {
     float: left;
     margin-left: 20px;
     transition: transform 0.3s;
-    font-size: 10px;
+    font-size: 9px;
     background-color: #FFDAD9;
     padding: 3px;
     border-radius: 3px;
